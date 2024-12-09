@@ -19,9 +19,7 @@ func main() {
 
 	log.Println("Listening on port", port, "with domain:", app.Domain)
 
-	http.HandleFunc("/", Hello)
-
-	if err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil); err != nil {
+	if err := http.ListenAndServe(fmt.Sprintf(":%d", port), app.route()); err != nil {
 		log.Fatal("Failed to start server:", err)
 	}
 }
