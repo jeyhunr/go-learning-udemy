@@ -29,6 +29,9 @@ func main() {
 		log.Fatal("Failed to connect to the database:", err)
 	}
 	app.DB = conn
+
+	defer app.DB.Close()
+
 	app.Domain = "rahimli.net"
 
 	log.Println("Listening on port", port, "with domain:", app.Domain)
